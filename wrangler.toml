@@ -1,0 +1,13 @@
+name = "astro-blog"
+compatibility_date = "2026-09-18"
+
+# Astro builds a static site into ./dist. Workers serves it directly as
+# static assets — no server-side code needed for a plain blog.
+[assets]
+directory = "./dist"
+
+# Once you buy/point a domain at this Worker, add it here (or do it from
+# the Cloudflare dashboard under Workers -> your project -> Custom Domains):
+# routes = [
+#   { pattern = "yourdomain.com", custom_domain = true }
+# ]
