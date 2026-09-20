@@ -14,9 +14,21 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 <BaseLayout title={post.data.title}>
-  <article>
-    <h1>{post.data.title}</h1>
-    <p><em>{post.data.pubDate.toDateString()}</em></p>
-    <Content />
-  </article>
+  <div class="term-window">
+    <div class="term-titlebar">
+      <span class="term-dot red"></span>
+      <span class="term-dot yellow"></span>
+      <span class="term-dot green"></span>
+      <span class="term-title">polt@stunroot: ~/blog/{post.slug}</span>
+    </div>
+    <div class="term-body">
+      <p><span class="prompt"></span> cat {post.slug}.md</p>
+      <article>
+        <h1>{post.data.title}</h1>
+        <p class="post-date">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+        <Content />
+      </article>
+      <p style="margin-top: 2rem;"><span class="prompt"></span> <span class="cursor"></span></p>
+    </div>
+  </div>
 </BaseLayout>
