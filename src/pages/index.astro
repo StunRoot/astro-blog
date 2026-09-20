@@ -7,30 +7,24 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 <BaseLayout title="Home">
-  <div class="term-window">
-    <div class="term-titlebar">
-      <span class="term-dot red"></span>
-      <span class="term-dot yellow"></span>
-      <span class="term-dot green"></span>
-      <span class="term-title">polt@stunroot: ~</span>
-    </div>
-    <div class="term-body">
-      <p><span class="prompt"></span> whoami</p>
-      <h1>Polt</h1>
-      <p>Probe. Observe. Locate. Track.</p>
+  <h1>Polt.StunRoot</h1>
+  <p>I write about the projects I build and what I learn along the way — part portfolio, part documentation for future me.</p>
 
-      <h2>recent_posts</h2>
-      <ul class="post-list">
-        {posts.map((post) => (
-          <li>
-            <span class="post-date">{post.data.pubDate.toISOString().slice(0, 10)}</span>
-            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-            <p class="post-desc">{post.data.description}</p>
-          </li>
-        ))}
-      </ul>
-
-      <p style="margin-top: 2rem;"><span class="prompt"></span> <span class="cursor"></span></p>
+  <h2 class="groupbox">Recent Posts</h2>
+  <div class="listview">
+    <div class="listview-header">
+      <span>Name</span>
+      <span>Date Modified</span>
     </div>
+    {posts.map((post) => (
+      <a class="listview-row" href={`/blog/${post.slug}/`}>
+        <span class="fname">
+          <span class="icon"></span>
+          {post.data.title}
+        </span>
+        <span class="fdate">{post.data.pubDate.toISOString().slice(0, 10)}</span>
+        <span class="post-desc">{post.data.description}</span>
+      </a>
+    ))}
   </div>
 </BaseLayout>

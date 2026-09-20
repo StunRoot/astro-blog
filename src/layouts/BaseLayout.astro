@@ -11,19 +11,40 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Polt.StunRoot</title>
+    <title>{title} - Polt.StunRoot</title>
   </head>
   <body>
-    <nav>
-      <a href="/">~</a>
-      <a href="/blog">blog</a>
-      <a href="https://github.com/StunRoot">github</a>
-    </nav>
-    <main class="wrap">
-      <slot />
-    </main>
-    <footer>
-      <span class="prompt"></span> echo "&copy; 2026 Polt.StunRoot"<span class="cursor"></span>
-    </footer>
+    <div class="win-window">
+      <div class="win-titlebar">
+        <div class="win-title-text">
+          <span class="win-title-icon"></span>
+          {title} - Polt.StunRoot
+        </div>
+        <div class="win-controls">
+          <span class="win-btn-sq">_</span>
+          <span class="win-btn-sq">&#9633;</span>
+          <span class="win-btn-sq">X</span>
+        </div>
+      </div>
+      <div class="win-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Help</span>
+      </div>
+      <div class="win-toolbar">
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="https://github.com/StunRoot">GitHub</a>
+      </div>
+      <div class="win-body">
+        <slot />
+      </div>
+      <div class="statusbar">
+        <span>&copy; 2026 Polt.StunRoot</span>
+        <span>Ready</span>
+      </div>
+    </div>
   </body>
 </html>

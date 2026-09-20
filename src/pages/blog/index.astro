@@ -7,26 +7,21 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 <BaseLayout title="Blog">
-  <div class="term-window">
-    <div class="term-titlebar">
-      <span class="term-dot red"></span>
-      <span class="term-dot yellow"></span>
-      <span class="term-dot green"></span>
-      <span class="term-title">polt@stunroot: ~/blog</span>
+  <h1>Blog</h1>
+  <div class="listview">
+    <div class="listview-header">
+      <span>Name</span>
+      <span>Date Modified</span>
     </div>
-    <div class="term-body">
-      <p><span class="prompt"></span> ls blog/</p>
-      <h2>all_posts</h2>
-      <ul class="post-list">
-        {posts.map((post) => (
-          <li>
-            <span class="post-date">{post.data.pubDate.toISOString().slice(0, 10)}</span>
-            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-            <p class="post-desc">{post.data.description}</p>
-          </li>
-        ))}
-      </ul>
-      <p style="margin-top: 2rem;"><span class="prompt"></span> <span class="cursor"></span></p>
-    </div>
+    {posts.map((post) => (
+      <a class="listview-row" href={`/blog/${post.slug}/`}>
+        <span class="fname">
+          <span class="icon"></span>
+          {post.data.title}
+        </span>
+        <span class="fdate">{post.data.pubDate.toISOString().slice(0, 10)}</span>
+        <span class="post-desc">{post.data.description}</span>
+      </a>
+    ))}
   </div>
 </BaseLayout>
